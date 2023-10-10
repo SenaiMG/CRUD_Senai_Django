@@ -9,7 +9,7 @@ def index(request):
 def create(request):
     Aluno.objects.create(nome=request.POST['nome'], idade=int(request.POST['idade']))
     alunos = Aluno.objects.all()
-    return render(request, "index.html", {'alunos':alunos})
+    return redirect('index')
 
 def edit(request, id):
     aluno = Aluno.objects.get(pk=id)
@@ -20,4 +20,9 @@ def update(request, id):
     aluno.nome = request.POST['nome']
     aluno.idade = request.POST['idade']
     aluno.save()
+    return redirect('index')
+
+def delete(request, id):
+    aluno = Aluno.objects.get(pk=id)
+    aluno.delete()
     return redirect('index')
