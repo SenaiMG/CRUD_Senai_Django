@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Aluno
 # Create your views here.
 
@@ -10,3 +10,14 @@ def create(request):
     Aluno.objects.create(nome=request.POST['nome'], idade=int(request.POST['idade']))
     alunos = Aluno.objects.all()
     return render(request, "index.html", {'alunos':alunos})
+
+def edit(request, id):
+    aluno = Aluno.objects.get(pk=id)
+    return render(request, "editar.html",{'aluno':aluno})
+
+def update(request, id):
+    aluno = Aluno.objects.get(pk=id)
+    aluno.nome = request.POST['nome']
+    aluno.idade = request.POST['idade']
+    aluno.save()
+    return redirect('index')

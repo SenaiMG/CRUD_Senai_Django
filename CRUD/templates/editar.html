@@ -1,0 +1,10 @@
+
+<h1>Página Edição</h1>
+
+<form action="{% url 'update' aluno.id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="nome" value="{{aluno.nome}}">
+    <input type="text" name="idade" value="{{aluno.idade}}">
+    <button type="submit">Enviar</button>
+</form>
+

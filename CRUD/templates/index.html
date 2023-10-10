@@ -11,5 +11,5 @@
 
 <h2>Listar alunos</h2>
 {% for aluno in alunos %}
-    <div>Aluno: {{aluno.nome}} sua idade é: {{aluno.idade}}</div>
+    <div>Aluno: {{aluno.nome}} sua idade é: {{aluno.idade}} <a href="{% url 'edit' aluno.id %}">Editar</a></div>
 {% endfor %}
