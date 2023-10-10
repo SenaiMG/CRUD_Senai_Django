@@ -1,2 +1,15 @@
 
 <h1>Página principal</h1>
+<h2>Cadastrar aluno:</h2>
+<form action="{% url 'create' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="nome">
+    <input type="text" name="idade">
+    <button type="submit">Enviar</button>
+</form>
+
+
+<h2>Listar alunos</h2>
+{% for aluno in alunos %}
+    <div>Aluno: {{aluno.nome}} sua idade é: {{aluno.idade}}</div>
+{% endfor %}
