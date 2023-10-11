@@ -1,4 +1,10 @@
-
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
 <h1>Página principal</h1>
 <h2>Cadastrar aluno:</h2>
 <form action="{% url 'create' %}" method="POST">
